@@ -1,0 +1,13 @@
+# Architecture
+
+The XMLFramework utilizes an open-layer architecture, which contains smaller structures such as the inherited class structure found within the Filter classes found within the framework and the XMLParsing classes and handlers in the toolkit. The framework primarily operates as a call and return system, consisting of a main program srcFacts.cpp and the framework and toolkit components that it calls upon to parse XMLDocuments.
+
+## Toolkit
+The toolkit consists of the classes and method functions responsible for parsing XML directly. The XMLDocument class generates the manipulatable object necessary for the framework to carry out its XML parsing functionality. The XML is parser through a series of concrete parser classes derived from the abstract class, XMLDocumentParser. The concrete parser classes, XMLDocumentHandlerParser and XMLDocumentTemplateParser are called up to parse XMLDocuments depending on the size of the XMLDocument being parsed. These parsers are called via handlers derived from the XMLParserHandler abstract class, as determined necessary by the XMLParserFactory object. The XMLParserFactory operates as a singleton class that runs a factory method to determine when it is necessary to use either a XMLDocumentHandlerParser or XMLDocumentTemplateParser. The XPathEvaluator class checks the validity of the directory path that the framework receives for the XML data it works with.
+
+## Framework
+The framework consists of a series of filters that operate on different sections of the XML parsing process. Each concrete filter class is derived from the abstract class Filter. The concrete classes are ParserFilter (monitors the XMLParser class and its associated handler classes), OutputFilter (monitors XML output), XPathFilter (monitors directory path validity), StatisticsFilter (outputs statistics on the XML data), and MacroFilter (operates as a series of individual filters). From the base class, the derived Filter classes obtain access to the base class' action method function through the use of virtual member functions. The MacroFilter class acts as a composite directory, enabling the framework to intiate different filter strategies on runtime. 
+
+
+## App
+The main program of the framework is srcFacts.cpp. This application calls the XML parsing components of the framework by using an XML parsing handler to call the XMLParser class and parse the XML input document.

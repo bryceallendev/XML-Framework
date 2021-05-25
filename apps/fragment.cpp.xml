@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.srcML.org/srcML/src" revision="1.0.0" language="C++" filename="fragment.cpp">    <comment type="line">// output to standard output if "-", otherwise to file</comment>
+    <if_stmt><if>if <condition>(<expr><name>outputFilename</name> <operator>==</operator> <literal type="string">"-"</literal></expr>)</condition> <block>{<block_content>
+        <expr_stmt><expr><name><name>std</name><operator>::</operator><name>cout</name></name> <operator>&lt;&lt;</operator> <name>doc</name></expr>;</expr_stmt>
+    </block_content>}</block></if> <else>else <block>{<block_content>
+        <decl_stmt><decl><type><name><name>std</name><operator>::</operator><name>ofstream</name></name></type> <name>out</name><argument_list>(<argument><expr><call><name><name>outputFilename</name><operator>.</operator><name>c_str</name></name><argument_list>()</argument_list></call></expr></argument>)</argument_list></decl>;</decl_stmt>
+        <expr_stmt><expr><name>out</name> <operator>&lt;&lt;</operator> <name>doc</name></expr>;</expr_stmt>
+    </block_content>}</block></else></if_stmt>
+</unit>

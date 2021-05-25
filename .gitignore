@@ -1,3 +1,9 @@
+# build directory
+build/
+
+# misc
+.DS_Store
+
 # Prerequisites
 *.d
 
