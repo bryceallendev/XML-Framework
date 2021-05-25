@@ -29,3 +29,11 @@ The open-layered architecture framework, XMLFramework, includes:
 - XMLLibrary
     - Set of C functions for processing XML.
     - Used to implement the XMLToolkit, but can be used directly.
+    
+## Installation
+
+### Requirements
+The app, xmlpipeline makes use of [CLI11](https://github.com/CLIUtils/CLI11) for its parsing command-line options. When cmake is run, the necessary files are downloaded to the subdirectory *external/*. On Windows devices, the download may be unsuccessful, due to your system settings. If this is the case, then download the file CLI11.hpp and save it in your build directory under *external/*.
+
+### Build
+*See [BUILD.md](https://github.com/bryceallendev/XML-Framework/blob/main/BUILD.md) file.*
